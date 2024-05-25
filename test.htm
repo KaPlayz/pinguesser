@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        button{
+            background-color: lightskyblue;
+            border: none;
+            border-radius: 5px;
+            height: auto;
+            min-height: 40px;
+            width: auto;
+            min-width: 60px;
+            margin: 12px;
+        }
+        input{
+            border-radius: 6px;
+            border: none;
+            background-color: rgb(181, 178, 178);
+            color: black;
+            height: auto;
+            min-height: 40px;
+
+        }
+        body{
+            display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="input" placeholder="Insert 4 digit PIN...">
+    <button type="submit" onclick="checkPin()">click</button>
+    <script>
+        const input = document.getElementById("input");
+        
+        
+        const generated = Math.floor(Math.random() * 9000) + 1000;
+        console.log("Generated PIN: " + generated);
+
+        document.addEventListener("keypress", event => {
+            if(event.key == "Enter"){
+                checkPin()
+            }
+        });
+
+        function checkPin(){
+            if(input.value == generated){
+                alert("Correct!");
+                location.reload();
+            }else{
+                alert("Wrong");
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
